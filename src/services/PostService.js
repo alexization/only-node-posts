@@ -23,6 +23,14 @@ class PostService {
 
         return createdPost;
     }
+
+    async findPostByPostId(postId) {
+        const post = await db.transaction(async (conn) => {
+            return await this.postRepository.findByPostId(postId);
+        });
+
+        return post;
+    }
 }
 
 module.exports = new PostService(new PostRepository());

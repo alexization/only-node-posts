@@ -12,8 +12,8 @@ class PostRepository {
         return new Post(result.insertId, post.title, post.content, post.author, new Date(), new Date());
     }
 
-    async findById(id) {
-        const sql = `SELECT id, title, content, author, created_at, updated_at
+    async findByPostId(id) {
+        const sql = `SELECT title, content, author, created_at, updated_at
                      FROM posts
                      WHERE id = ?;
         `;

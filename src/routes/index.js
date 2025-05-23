@@ -66,7 +66,6 @@ class Router {
                 if (match) {
                     handler = this.routes[method][routePath];
                     matchedPath = routePath;
-
                     const paramNames = (routePath.match(/:([a-zA-Z0-9_]+)/g) || [])
                         .map(p => p.slice(1))
                     paramNames.forEach((name, index) => {
@@ -93,5 +92,6 @@ class Router {
 const router = new Router();
 
 router.post('/api/posts', PostController.createPost.bind(PostController));
+router.get('/api/post/:id', PostController.findPostByPostId.bind(PostController))
 
 module.exports = router;
